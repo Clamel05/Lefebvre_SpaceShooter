@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014826324}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4623c9c4ac3b93f4ea69fd74cc9abda1, type: 3}
   m_Name: 
@@ -2481,6 +2481,13 @@ MonoBehaviour:
   - {fileID: 426582573}
   - {fileID: 2257695664884323191}
   drawingTime: 0.5
+  Star1: {fileID: 5474742212950596557}
+  Star2: {fileID: 426582572}
+  Star3: {fileID: 366221041}
+  Star4: {fileID: 1313632415}
+  Star5: {fileID: 1643329863}
+  Star6: {fileID: 795502856}
+  Star7: {fileID: 1311288638}
 --- !u!4 &1573207886
 Transform:
   m_ObjectHideFlags: 0
