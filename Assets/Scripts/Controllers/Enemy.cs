@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     public float Speed = 10.0f;
     public float Dash = 20.0f;
-    public float Timer = 3.0f * Time.deltaTime;
+    //public float Timer = 3.0f * Time.deltaTime;
 
     void Update()
     {
@@ -23,11 +23,13 @@ public class Enemy : MonoBehaviour
                 float SpeedReset = Speed;
                 Speed = Speed + Dash;
 
-                for(Timer = 3.0f; Timer > 0; Timer-=Time.deltaTime)
+              /* This is commented out because it's giving errors and it's not completed. 
+                 It is still part of the code.
+                 for(Timer = 3.0f; Timer > 0; Timer-=Time.deltaTime)
                 {
                     Speed = SpeedReset;
                 }
-
+              */ 
             }
 
 
