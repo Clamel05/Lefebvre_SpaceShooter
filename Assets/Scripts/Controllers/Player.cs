@@ -9,11 +9,18 @@ public class Player : MonoBehaviour
     public GameObject bombPrefab;
     public Transform bombsTransform;
 
-    public float Speed = 10.0f;
+    public float Speed = 5.0f;
+    float accelrationTime = 5f;
+    float time = 0f;
 
     void Update()
     {
         Vector3 offset = Vector3.zero;
+
+        
+
+        
+         
 
         if (Input.GetKey(KeyCode.LeftArrow))
             offset += Vector3.left * Speed;
@@ -23,6 +30,7 @@ public class Player : MonoBehaviour
             offset += Vector3.up * Speed;
         if (Input.GetKey(KeyCode.DownArrow))
             offset += Vector3.down * Speed;
+        
 
         PlayerMovevement(offset);
 
@@ -30,7 +38,14 @@ public class Player : MonoBehaviour
 
     private void PlayerMovevement(Vector3 offset)
     {
-        transform.position += offset * Time.deltaTime;
+        for (time = 0f; time < accelrationTime * Time.deltaTime; time += Speed)
+        {
+            for (float MaxSpeed = 20.0f; Speed < MaxSpeed; Speed++)
+            {
+                transform.position += offset * Time.deltaTime;
+            }
+        }
+        
     }
 
 }
