@@ -75,7 +75,40 @@ public class Player : MonoBehaviour
 
         PlayerMovevement(offset);
 
+        //Week4 Task1
+        EnemyRadar();
+
+
+
+
     }
+
+    private void EnemyRadar(float radius = 3, int CirclePoints = 8)
+    {
+        for(int i = 0; i < CirclePoints; i++)
+        {
+            float radians = (Mathf.Deg2Rad * (360 / CirclePoints)) * i+1;
+            float xPos = Mathf.Cos(radians);
+            float yPos = Mathf.Sin(radians);
+
+            Vector3 endPoint = transform.position + (new Vector3(xPos, yPos, 0f) * radius);
+
+            float radians2 = (Mathf.Deg2Rad * (360 / CirclePoints)) * i;
+            float xPos2 = Mathf.Cos(radians2);
+            float yPos2 = Mathf.Sin(radians2);
+
+            Vector3 StartPoint = transform.position + (new Vector3(xPos2, yPos2, 0f) * radius);
+
+            Debug.DrawLine(StartPoint, endPoint, Color.green);
+        }
+
+
+    }
+
+
+
+
+
 
     private void PlayerMovevement(Vector3 offset)
     {
