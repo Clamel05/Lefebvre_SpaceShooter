@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public GameObject bombPrefab;
     public Transform bombsTransform;
 
+    public GameObject PowerUpPrefab;
+
     public float Speed = 0.0f;
     //float accelrationTime = 5f;
     //float time = 0f;
@@ -76,10 +78,10 @@ public class Player : MonoBehaviour
         PlayerMovevement(offset);
 
         //Week4 Task1
-        EnemyRadar();
+        //EnemyRadar();
 
-
-
+        //Week4 Task2
+        //SpawnPowerups();
 
     }
 
@@ -102,6 +104,20 @@ public class Player : MonoBehaviour
             Debug.DrawLine(StartPoint, endPoint, Color.green);
         }
 
+    }
+
+    public void SpawnPowerups(float radius = 3, int numberOfPowerups = 4)
+    {
+        for(int i = 0; i < numberOfPowerups; i++)
+        {
+            float radians = (Mathf.Deg2Rad * (360 / numberOfPowerups)) * i;
+            float xPos = Mathf.Cos(radians);
+            float yPos = Mathf.Sin(radians);
+
+            Vector3 Position = transform.position + (new Vector3(xPos, yPos, 0f) * radius);
+
+            Instantiate(PowerUpPrefab, Position, Quaternion.identity);
+        }
 
     }
 
