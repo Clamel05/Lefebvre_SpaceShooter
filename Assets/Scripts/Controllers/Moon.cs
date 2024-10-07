@@ -19,7 +19,7 @@ public class Moon : MonoBehaviour
     {
 
 
-        OrbitalMotion();
+        //OrbitalMotion();
     }
 
 
