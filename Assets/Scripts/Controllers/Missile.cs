@@ -31,7 +31,11 @@ public class Missile : MonoBehaviour
             if (transform.position != Player.position)
             {
                 Vector3 speed = Player.position;
-                transform.position = transform.position + speed * Time.deltaTime;
+                for (float i = 0f; i < 10; i = i + i * Time.deltaTime)
+                {
+                    transform.position = transform.position + speed * Time.deltaTime;
+                }
+                
             }
             else
             {
