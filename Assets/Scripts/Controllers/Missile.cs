@@ -8,47 +8,48 @@ public class Missile : MonoBehaviour
 {
 
     public Transform Player;
-    Vector3 speed = Vector3.zero;
+    public float speed = 2f;
+
+    private Vector3 diretionToTarget;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        FindPlayerPosition();
+    }
+
+    private void FindPlayerPosition()
+    {
+        diretionToTarget = (Player.position - transform.position).normalized;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            FindPlayerPosition();
+        }
+
         MissileSeeker();
-        
     }
 
 
     void MissileSeeker()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            if (transform.position != Player.position)
-            {
-                Vector3 speed = Player.position;
-                for (float i = 0f; i < 10; i = i + i * Time.deltaTime)
-                {
-                    transform.position = transform.position + speed * Time.deltaTime;
-                }
-                
-            }
-            else
-            {
-                speed = Vector3.zero;
-                Debug.Log ("Hit");
-            }
-                
-        }
+        Debug.DrawLine(transform.position, transform.position + diretionToTarget, Color.red);
+        transform.position += Time.deltaTime * speed * diretionToTarget;
 
-        
-            
-        
-
+        //if (transform.position != Player.position)
+        //{
+        //    Vector3 Playerposition = Player.position;
+        //    transform.position = transform.position + Playerposition * speed * Time.deltaTime;
+        //}
+        //else
+        //{
+        //    speed = 0;
+        //    Debug.Log("Hit");
+        //}
     }
 }
 
