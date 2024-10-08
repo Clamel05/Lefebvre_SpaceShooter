@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
         PlayerMovevement(offset);
 
         //Week4 Task1
-        //EnemyRadar();
+        EnemyRadar();
 
         //Week4 Task2
         //SpawnPowerups();
