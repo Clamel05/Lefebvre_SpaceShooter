@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
 
     public GameObject PowerUpPrefab;
 
+    
+
+
 
     public float Speed = 0.0f;
     //float accelrationTime = 5f;
@@ -18,12 +21,14 @@ public class Player : MonoBehaviour
     public float MaxSpeed = 20.0f;
 
     Missile missileScript;
+    Vector3 detectDistance = new Vector3(0, 0, 0);
+    public GameObject missileObject;
 
     public void Start()
     {
-        //missileScript = GameObject.Find("FindPlayerPosition").GetComponent<ScriptableObject>();
+        
 
-        missileScript = GameObject.FindGameObjectWithTag("Missile").GetComponent<Missile>();
+        missileScript = GameObject.FindGameObjectWithTag("MissileTag").GetComponent<Missile>();
 
     }
 
@@ -33,7 +38,7 @@ public class Player : MonoBehaviour
     {
         Vector3 offset = Vector3.zero;
 
-        missileScript.FindPlayerPosition();
+        
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -83,7 +88,7 @@ public class Player : MonoBehaviour
         PlayerMovevement(offset);
 
         //Week4 Task1
-        EnemyRadar();
+        Shield();
 
         //Week4 Task2
         //SpawnPowerups();
@@ -91,7 +96,7 @@ public class Player : MonoBehaviour
     }
 
   
-    private void EnemyRadar(float radius = 3, int CirclePoints = 6)
+    public void Shield(float radius = 3, int CirclePoints = 6)
     {
         for(int i = 0; i < CirclePoints; i++)
         {
@@ -107,7 +112,15 @@ public class Player : MonoBehaviour
 
             Vector3 startPoint = transform.position + (new Vector3(xPos2, yPos2, 0f) * radius);
 
-            Debug.DrawLine(startPoint, endPoint, Color.green);
+            Debug.DrawLine(startPoint, endPoint, Color.blue);
+        }
+
+
+        detectDistance = missileObject.transform.position - transform.position;
+
+        if(detectDistance.magnitude < radius)
+        {
+            missileScript.Deflect();
         }
 
         

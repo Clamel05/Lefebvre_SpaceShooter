@@ -30,6 +30,11 @@ public class Missile : MonoBehaviour
 
     }
 
+    public void Deflect()
+    {
+        directionToTarget = directionToTarget * (-1);
+    }
+
 
     // Update is called once per frame
     void Update()
