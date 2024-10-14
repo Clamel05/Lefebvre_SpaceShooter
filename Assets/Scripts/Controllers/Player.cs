@@ -11,24 +11,29 @@ public class Player : MonoBehaviour
 
     public GameObject PowerUpPrefab;
 
+
     public float Speed = 0.0f;
     //float accelrationTime = 5f;
     //float time = 0f;
     public float MaxSpeed = 20.0f;
 
+    Missile missileScript;
+
+    public void Start()
+    {
+        //missileScript = GameObject.Find("FindPlayerPosition").GetComponent<ScriptableObject>();
+
+        missileScript = GameObject.FindGameObjectWithTag("Missile").GetComponent<Missile>();
+
+    }
+
+
+
     void Update()
     {
         Vector3 offset = Vector3.zero;
 
-        /*for(time = 0f; time < accelrationTime * Time.deltaTime; time += Speed)
-        {
-            for (MaxSpeed = 20.0f; Speed < MaxSpeed; Speed++)
-            {
-
-            }
-        }*/
-
-
+        missileScript.FindPlayerPosition();
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -104,6 +109,8 @@ public class Player : MonoBehaviour
 
             Debug.DrawLine(startPoint, endPoint, Color.green);
         }
+
+        
 
     }
 

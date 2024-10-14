@@ -10,7 +10,7 @@ public class Missile : MonoBehaviour
     public Transform Player;
     public float speed = 2f;
 
-    private Vector3 directionToTarget;
+    public Vector3 directionToTarget;
     
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class Missile : MonoBehaviour
     }
 
 
-    private void FindPlayerPosition()
+    public void FindPlayerPosition()
     {
         directionToTarget = (Player.position - transform.position).normalized;
 
