@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
         PlayerMovevement(offset);
 
         //Week4 Task1
-        //EnemyRadar();
+        EnemyRadar();
 
         //Week4 Task2
         //SpawnPowerups();
@@ -86,11 +86,11 @@ public class Player : MonoBehaviour
     }
 
   
-    private void EnemyRadar(float radius = 3, int CirclePoints = 8)
+    private void EnemyRadar(float radius = 3, int CirclePoints = 6)
     {
         for(int i = 0; i < CirclePoints; i++)
         {
-            float radians = (Mathf.Deg2Rad * (360 / CirclePoints)) * i+1;
+            float radians = (Mathf.Deg2Rad * (360 / CirclePoints) * i+1);
             float xPos = Mathf.Cos(radians);
             float yPos = Mathf.Sin(radians);
 
@@ -100,9 +100,9 @@ public class Player : MonoBehaviour
             float xPos2 = Mathf.Cos(radians2);
             float yPos2 = Mathf.Sin(radians2);
 
-            Vector3 StartPoint = transform.position + (new Vector3(xPos2, yPos2, 0f) * radius);
+            Vector3 startPoint = transform.position + (new Vector3(xPos2, yPos2, 0f) * radius);
 
-            Debug.DrawLine(StartPoint, endPoint, Color.green);
+            Debug.DrawLine(startPoint, endPoint, Color.green);
         }
 
     }
