@@ -20,7 +20,7 @@ public class RotationTest : MonoBehaviour
         Debug.DrawLine(transform.position, transform.up, Color.blue);
 
         float currentRotation = transform.rotation.eulerAngles.z + 90;
-        Debug.Log($"<color=yellow><size=16>{currentRotation}</size></color>");
+        //Debug.Log($"<color=yellow><size=16>{currentRotation}</size></color>");
 
 
         if(TargetAngle - currentRotation < 0)
