@@ -9,13 +9,17 @@ public class Missile : MonoBehaviour
 
     public Transform Player;
     public float speed = 2f;
+    public float rotateSpeed = 1.0f;
 
     public Vector3 directionToTarget;
-    
+
+    private Quaternion lookRotation;
 
     // Start is called before the first frame update
     void Start()
     {
+        
+
         FindPlayerPosition();
         
     }
@@ -25,8 +29,8 @@ public class Missile : MonoBehaviour
     {
         directionToTarget = (Player.position - transform.position).normalized;
 
-        //Vector3 rotation = new Vector3(0, 0, 180);
-        //transform.rotation = (0,0,rotation * Quaternion.identity);
+        //My attempt at rotating the missile
+        //transform.LookAt(Player);
 
     }
 
@@ -45,14 +49,16 @@ public class Missile : MonoBehaviour
         }
 
         MissileSeeker();
-        
+
+        //My other attempt at rotating the missile
+        //lookRotation = Quaternion.LookRotation(directionToTarget);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotateSpeed);
+
     }
 
     void MissileSeeker()
     {
         transform.position += Time.deltaTime * speed * directionToTarget;
         Debug.DrawLine(transform.position, transform.position + directionToTarget, Color.red);
-        
-        
     }
 }

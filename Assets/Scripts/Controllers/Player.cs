@@ -116,11 +116,14 @@ public class Player : MonoBehaviour
         }
 
 
+
         detectDistance = missileObject.transform.position - transform.position;
 
         if(detectDistance.magnitude < radius)
         {
-            missileScript.Deflect();
+         Debug.Log("Hit");
+         missileScript.Deflect();
+         Debug.Log("Bounce");
         }
 
         
